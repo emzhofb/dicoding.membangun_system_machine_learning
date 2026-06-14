@@ -1,0 +1,42 @@
+name: Automated Preprocessing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Bisa trigger manual
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.7"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas numpy scikit-learn
+
+      - name: Run preprocessing
+        run: |
+          cd preprocessing
+          python automate_Nama-siswa.py
+
+      - name: Upload preprocessed data
+        uses: actions/upload-artifact@v4
+        with:
+          name: preprocessed-dataset
+          path: preprocessing/namadataset_preprocessing/
+
+      - name: Commit preprocessed data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add preprocessing/namadataset_preprocessing/
+          git diff --staged --quiet || git commit -m "chore: auto-update preprocessed data"
+          git push

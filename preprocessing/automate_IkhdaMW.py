@@ -119,10 +119,12 @@ def run_preprocessing(input_path, target_column, output_dir, categorical_columns
 
 if __name__ == "__main__":
   # ===== PARAMETER DATASET PALMER PENGUINS =====
-  INPUT_PATH = "./penguins_size.csv"             # Path ke dataset mentah
-  TARGET_COLUMN = "species"                       # Nama kolom target
-  OUTPUT_DIR = "dataset_preprocessing"            # Folder output
-  CATEGORICAL_COLUMNS = ["island", "sex"]          # Kolom kategorikal
+  # Menggunakan path dinamis agar skrip dapat dijalankan dari folder mana saja
+  script_dir = os.path.dirname(os.path.abspath(__file__))
+  INPUT_PATH = os.path.join(script_dir, "../penguins_size.csv")   # Path ke dataset mentah
+  TARGET_COLUMN = "species"                                      # Nama kolom target
+  OUTPUT_DIR = os.path.join(script_dir, "dataset_preprocessing")  # Folder output
+  CATEGORICAL_COLUMNS = ["island", "sex"]                        # Kolom kategorikal
   # =============================================
   
   run_preprocessing(INPUT_PATH, TARGET_COLUMN, OUTPUT_DIR, CATEGORICAL_COLUMNS)

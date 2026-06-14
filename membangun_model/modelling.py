@@ -29,7 +29,7 @@ def train_model():
 
   # Load data
   X_train, X_test, y_train, y_test = load_preprocessed_data(
-    "dataset_preprocessing"
+    "preprocessing/dataset_preprocessing"
   )
 
   # Set MLflow experiment

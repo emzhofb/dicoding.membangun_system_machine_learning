@@ -115,7 +115,7 @@ async def load_model():
   # OPSI 3: Latih ulang model dari dataset preprocessed (paling gampang untuk testing)
   from sklearn.ensemble import RandomForestClassifier
 
-  train = pd.read_csv("../dataset_preprocessing/train.csv")
+  train = pd.read_csv("../preprocessing/dataset_preprocessing/train.csv")
   X_train = train.drop('target', axis=1)
   y_train = train['target']
   model = RandomForestClassifier(n_estimators=100, random_state=42)

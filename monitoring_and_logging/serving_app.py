@@ -112,14 +112,15 @@ async def load_model():
   # Cari path model di folder mlruns
   # model = mlflow.sklearn.load_model("mlruns/0/<run_id>/artifacts/model")
 
-  # OPSI 3: Latih ulang model sederhana (paling gampang untuk testing)
+  # OPSI 3: Latih ulang model dari dataset preprocessed (paling gampang untuk testing)
   from sklearn.ensemble import RandomForestClassifier
-  from sklearn.datasets import load_iris
 
-  iris = load_iris()
+  train = pd.read_csv("dataset_preprocessing/train.csv")
+  X_train = train.drop('target', axis=1)
+  y_train = train['target']
   model = RandomForestClassifier(n_estimators=100, random_state=42)
-  model.fit(iris.data, iris.target)
-  print("✅ Model loaded successfully!")
+  model.fit(X_train, y_train)
+  print(f"✅ Model loaded successfully! Features: {list(X_train.columns)}")
 
 
 @app.get("/")
@@ -182,3 +183,4 @@ async def metrics():
     content=generate_latest(),
     media_type=CONTENT_TYPE_LATEST
   )
+  

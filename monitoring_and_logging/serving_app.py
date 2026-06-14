@@ -96,7 +96,7 @@ class PredictionInput(BaseModel):
 
 
 class PredictionOutput(BaseModel):
-  prediction: int
+  prediction: str
   confidence: float
 
 
@@ -162,7 +162,7 @@ async def predict(input_data: PredictionInput):
     TOTAL_PREDICTIONS.inc()
 
     return PredictionOutput(
-      prediction=int(prediction),
+      prediction=str(prediction),
       confidence=round(confidence, 4)
     )
 

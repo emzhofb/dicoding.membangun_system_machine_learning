@@ -29,12 +29,14 @@ def generate_traffic(n_requests=50):
     
     for i in range(n_requests):
         # Buat fitur random (sesuaikan jumlah fitur dengan dataset kamu)
-        # Contoh untuk Iris dataset (4 fitur):
+        # Palmer Penguins dataset (6 fitur setelah di-preprocess/scaling):
         features = [
-            round(random.uniform(4.0, 8.0), 1),   # sepal_length
-            round(random.uniform(2.0, 4.5), 1),    # sepal_width
-            round(random.uniform(1.0, 7.0), 1),    # petal_length
-            round(random.uniform(0.1, 2.5), 1),    # petal_width
+            round(random.uniform(-2.0, 2.0), 4),   # island (scaled)
+            round(random.uniform(-2.0, 2.0), 4),   # culmen_length_mm (scaled)
+            round(random.uniform(-2.0, 2.0), 4),   # culmen_depth_mm (scaled)
+            round(random.uniform(-2.0, 2.0), 4),   # flipper_length_mm (scaled)
+            round(random.uniform(-2.0, 2.0), 4),   # body_mass_g (scaled)
+            round(random.uniform(-2.0, 2.0), 4),   # sex (scaled)
         ]
         
         try:

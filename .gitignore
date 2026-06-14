@@ -22,3 +22,6 @@ __pycache__/
 mlruns/
 mlflow-artifacts/
 membangun_model/mlruns/
+
+# Workflow-CI
+Workflow-CI

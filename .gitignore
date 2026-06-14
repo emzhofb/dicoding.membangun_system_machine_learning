@@ -1,0 +1,23 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+share/
+include/
+pyvenv.cfg
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# MLflow local runs (jika nanti dijalankan di local folder ini)
+mlruns/
+mlflow-artifacts/

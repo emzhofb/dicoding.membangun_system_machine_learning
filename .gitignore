@@ -21,3 +21,4 @@ __pycache__/
 # MLflow local runs (jika nanti dijalankan di local folder ini)
 mlruns/
 mlflow-artifacts/
+membangun_model/mlruns/
